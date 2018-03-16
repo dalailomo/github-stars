@@ -2,7 +2,7 @@
   <v-card v-if="loading" class="profile">
     Loading...
   </v-card>
-  <v-card v-else class="profile">
+  <v-card v-else-if="user.login" class="profile">
     <v-card-media
       class="white--text"
       height="200px"
@@ -22,6 +22,13 @@
         <span>{{ user.name }}</span>
       </div>
     </v-card-title>
+    <v-card-actions>
+      <v-spacer />
+      <v-btn flat small color="primary" @click="visitUser(user.html_url)">View user page</v-btn>
+    </v-card-actions>
+  </v-card>
+  <v-card v-else class="profile">
+    User not found :(
   </v-card>
 </template>
 
@@ -52,16 +59,26 @@ export default {
     ...mapActions([
       'actionGetGithubUser',
     ]),
+
+    visitUser(href) {
+      window.open(href, '_blank')
+    },
+
+    fetchUser() {
+      this.actionGetGithubUser(this.$route.params.username).catch(e => {
+        console.log(e)
+      })
+    },
   },
 
   watch: {
     '$route'() {
-      this.actionGetGithubUser(this.$route.params.username)
+      this.fetchUser()
     },
   },
 
   mounted() {
-    this.actionGetGithubUser(this.$route.params.username)
+    this.fetchUser()
   },
 }
 </script>

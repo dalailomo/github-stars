@@ -9,24 +9,12 @@
         </v-card-media>
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0"><a class="action" :href="item.html_url" target="_blank">{{ item.name }}</a></h3>
-            <p>Author: <big class="action" @click="changeUser(item.owner.login)">{{ item.owner.login }}</big></p>
+            <h3 class="headline mb-0">{{ item.name }}</h3>
+            <p>Author: <big>{{ item.owner.login }}</big></p>
+            <p v-if="item.license">License: <big>{{ item.license.key }} ({{ item.license.name }})</big></p>
+            <p>Language: <big>{{ item.language }}</big></p>
           </div>
         </v-card-title>
-
-        <v-divider />
-
-        <v-card-text class="description">
-          <p v-if="item.description">{{ item.description }}</p>
-          <p v-else><i>No description</i></p>
-        </v-card-text>
-
-        <v-divider />
-
-        <v-card-text class="details">
-          <p v-if="item.license">License: <big>{{ item.license.key }} ({{ item.license.name }})</big></p>
-          <p>Language: <big>{{ item.language }}</big></p>
-        </v-card-text>
 
         <v-divider />
 
@@ -36,6 +24,19 @@
           <div><v-icon small>call_split</v-icon> {{ item.forks_count }}</div>
           <div><v-icon small>info_outline</v-icon> {{ item.open_issues_count }}</div>
         </v-card-text>
+
+        <v-divider />
+
+        <v-card-text class="description">
+          <p v-if="item.description">{{ item.description }}</p>
+          <p v-else><i>No description</i></p>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-btn flat small color="primary" @click="visitRepository(item.html_url)">Repository</v-btn>
+          <v-spacer />
+          <v-btn flat small color="green" @click="changeUser(item.owner.login)">Author stars</v-btn>
+        </v-card-actions>
       </v-card>
 
       <div class="spaced" />
@@ -89,6 +90,7 @@ p {
 .readme {
   max-width: 88vw;
   line-height: 1.8em;
+  overflow-x: auto;
 
   h1, h2, h3, h4, h5 {
     padding: .5em 0;
@@ -152,6 +154,10 @@ export default {
 
     changeUser(user) {
       this.$router.push(`/details/${user}`)
+    },
+
+    visitRepository(href) {
+      window.open(href, '_blank')
     },
 
     fetchReadme() {

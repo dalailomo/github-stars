@@ -25,6 +25,8 @@ const actions = {
     }
 
     const onError = (error) => {
+      commit(mutation.SET_GITHUB_USER_OBJECT, {})
+      commit(mutation.IS_LOADING_GITHUB_USER_OBJECT, false)
       reject(error)
     }
 

@@ -60,6 +60,8 @@ export default {
               this.selectItem(iterationItem)
             }
           })
+        }).catch(e => {
+          console.log(e)
         })
       }
     },
