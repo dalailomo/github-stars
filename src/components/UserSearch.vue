@@ -25,20 +25,20 @@ import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      username: state => state.searchForm.username
-    })
+      username: state => state.searchForm.username,
+    }),
   },
 
   methods: {
     ...mapActions([
-      'actionSetUsername'
+      'actionSetUsername',
     ]),
 
-    userNameUpdate (value) {
+    userNameUpdate(value) {
       this.actionSetUsername(value)
     },
 
-    submit (e) {
+    submit(e) {
       e.preventDefault()
 
       this.$router.push(`/details/${this.username}`)
@@ -46,15 +46,15 @@ export default {
   },
 
   watch: {
-    '$route' (to, from) {
+    '$route'(to, from) {
       if (this.username === to.params.username) return
 
       this.actionSetUsername(to.params.username)
-    }
+    },
   },
 
-  mounted () {
+  mounted() {
     this.actionSetUsername(this.$route.params.username)
-  }
+  },
 }
 </script>

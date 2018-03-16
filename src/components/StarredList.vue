@@ -36,21 +36,21 @@ export default {
       items: state => state.starredList.items,
       loading: state => state.starredList.loading,
       item: state => state.starredList.currentItem,
-      username: state => state.searchForm.username
-    })
+      username: state => state.searchForm.username,
+    }),
   },
 
   methods: {
     ...mapActions([
       'actionSetCurrent',
-      'actionGetStarred'
+      'actionGetStarred',
     ]),
 
-    selectItem (item) {
+    selectItem(item) {
       this.actionSetCurrent(item)
     },
 
-    fetchData () {
+    fetchData() {
       if (this.$route.params.username) {
         this.actionGetStarred(this.$route.params.username).then(() => {
           if (!this.$route.params.repository) return
@@ -62,18 +62,18 @@ export default {
           })
         })
       }
-    }
+    },
   },
 
   watch: {
-    '$route' () {
+    '$route'() {
       this.fetchData()
-    }
+    },
   },
 
-  mounted () {
+  mounted() {
     this.fetchData()
-  }
+  },
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex xs12 sm8 offset-sm2>
-      <v-card class="summary" v-if="loading">
+      <v-card class="summary" v-if="loadingStarred">
         <v-card-text>Loading...</v-card-text>
       </v-card>
       <v-card class="summary" v-else-if="item.owner">
@@ -133,7 +133,7 @@ import VueMarkdown from 'vue-markdown'
 
 export default {
   components: {
-    VueMarkdown
+    VueMarkdown,
   },
 
   computed: {
@@ -141,52 +141,58 @@ export default {
       item: state => state.starredList.currentItem,
       loadingStarred: state => state.starredList.loading,
       readme: state => state.repository.readme,
-      loading: state => state.repository.loading
-    })
+      loading: state => state.repository.loading,
+    }),
   },
 
   methods: {
     ...mapActions([
-      'actionGetRepoReadme'
+      'actionGetRepoReadme',
     ]),
 
-    changeUser (user) {
+    changeUser(user) {
       this.$router.push(`/details/${user}`)
-    }
+    },
+
+    fetchReadme() {
+      this.actionGetRepoReadme({
+        owner: this.$route.params.owner,
+        repo: this.$route.params.repository,
+      }).catch(e => {
+        console.log(e)
+      })
+    },
+
+    processLinksOnReadmeContent() {
+      const listener = (e) => {
+        e.preventDefault()
+        const href = e.target.getAttribute('href')
+
+        if (!href) return
+
+        var r = new RegExp('^(?:[a-z]+:)?//', 'i')
+
+        if (r.test(href)) {
+          window.open(href, '_blank')
+        } else {
+          // TODO notification that is a relative link and cant be open (use notification component)
+        }
+      }
+
+      this.$refs.readmeRef.$el.removeEventListener('click', listener, false)
+      this.$refs.readmeRef.$el.addEventListener('click', listener, false)
+    },
   },
 
   watch: {
-    '$route' () {
-      this.actionGetRepoReadme({
-        owner: this.$route.params.owner,
-        repo: this.$route.params.repository
-      })
-    }
+    '$route'() {
+      this.fetchReadme()
+    },
   },
 
-  mounted () {
-    this.actionGetRepoReadme({
-      owner: this.$route.params.owner,
-      repo: this.$route.params.repository
-    })
-
-    const listener = (e) => {
-      e.preventDefault()
-      const href = e.target.getAttribute('href')
-
-      if (!href) return
-
-      var r = new RegExp('^(?:[a-z]+:)?//', 'i');
-
-      if (r.test(href)) {
-        window.open(href, '_blank');
-      } else {
-        // TODO notification that is a relative link and cant be open (use notification component)
-      }
-    }
-
-    this.$refs.readmeRef.$el.removeEventListener('click', listener, false)
-    this.$refs.readmeRef.$el.addEventListener('click', listener, false)
-  }
+  mounted() {
+    this.fetchReadme()
+    this.processLinksOnReadmeContent()
+  },
 }
 </script>

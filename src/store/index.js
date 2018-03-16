@@ -14,7 +14,7 @@ export default new Vuex.Store({
     githubUser,
     searchForm,
     starredList,
-    repository
+    repository,
   },
-  strict: true
+  strict: true,
 })

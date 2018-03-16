@@ -44,24 +44,24 @@ export default {
   computed: {
     ...mapState({
       user: state => state.githubUser.data,
-      loading: state => state.githubUser.loading
-    })
+      loading: state => state.githubUser.loading,
+    }),
   },
 
   methods: {
     ...mapActions([
-      'actionGetGithubUser'
-    ])
+      'actionGetGithubUser',
+    ]),
   },
 
   watch: {
-    '$route' () {
+    '$route'() {
       this.actionGetGithubUser(this.$route.params.username)
-    }
+    },
   },
 
   mounted() {
     this.actionGetGithubUser(this.$route.params.username)
-  }
+  },
 }
 </script>

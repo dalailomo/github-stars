@@ -4,19 +4,19 @@ import * as mutation from './../mutation-types'
 const state = {
   items: [],
   currentItem: {},
-  loading: false
+  loading: false,
 }
 
 const mutations = {
-  [mutation.SET_STARRED_LIST] (state, payload) {
+  [mutation.SET_STARRED_LIST](state, payload) {
     state.items = payload
   },
-  [mutation.SET_ACTIVE_REPOSITORY] (state, payload) {
+  [mutation.SET_ACTIVE_REPOSITORY](state, payload) {
     state.currentItem = payload
   },
-  [mutation.IS_LOADING_STARRED_LIST] (state, payload) {
+  [mutation.IS_LOADING_STARRED_LIST](state, payload) {
     state.loading = payload
-  }
+  },
 }
 
 const actions = {
@@ -29,6 +29,7 @@ const actions = {
     }
 
     const onError = (error) => {
+      commit(mutation.IS_LOADING_STARRED_LIST, false)
       reject(error)
     }
 
@@ -39,11 +40,11 @@ const actions = {
   actionSetCurrent: ({ commit }, item) => new Promise((resolve, reject) => {
     commit(mutation.SET_ACTIVE_REPOSITORY, item)
     resolve()
-  })
+  }),
 }
 
 export default {
   state,
   actions,
-  mutations
+  mutations,
 }

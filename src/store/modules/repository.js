@@ -3,16 +3,16 @@ import * as mutation from './../mutation-types'
 
 const state = {
   readme: {},
-  loading: false
+  loading: false,
 }
 
 const mutations = {
-  [mutation.SET_REPOSITORY_README] (state, payload) {
+  [mutation.SET_REPOSITORY_README](state, payload) {
     state.readme = payload
   },
-  [mutation.IS_LOADING_README] (state, payload) {
+  [mutation.IS_LOADING_README](state, payload) {
     state.loading = payload
-  }
+  },
 }
 
 const actions = {
@@ -25,16 +25,18 @@ const actions = {
     }
 
     const onError = (error) => {
+      commit(mutation.SET_REPOSITORY_README, {content: 'No readme file found'})
+      commit(mutation.IS_LOADING_README, false)
       reject(error)
     }
 
     commit(mutation.IS_LOADING_README, true)
     api.getRepoReadme(params).then(onSuccess).catch(onError)
-  })
+  }),
 }
 
 export default {
   state,
   actions,
-  mutations
+  mutations,
 }

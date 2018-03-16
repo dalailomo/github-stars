@@ -3,16 +3,16 @@ import * as mutation from './../mutation-types'
 
 const state = {
   data: {},
-  loading: false
+  loading: false,
 }
 
 const mutations = {
-  [mutation.SET_GITHUB_USER_OBJECT] (state, payload) {
+  [mutation.SET_GITHUB_USER_OBJECT](state, payload) {
     state.data = payload
   },
-  [mutation.IS_LOADING_GITHUB_USER_OBJECT] (state, payload) {
+  [mutation.IS_LOADING_GITHUB_USER_OBJECT](state, payload) {
     state.loading = payload
-  }
+  },
 }
 
 const actions = {
@@ -30,11 +30,11 @@ const actions = {
 
     commit(mutation.IS_LOADING_GITHUB_USER_OBJECT, true)
     api.getUser(username).then(onSuccess).catch(onError)
-  })
+  }),
 }
 
 export default {
   state,
   actions,
-  mutations
+  mutations,
 }

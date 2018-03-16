@@ -14,13 +14,13 @@ const getApiEndpoint = () => {
 const endpoint = getApiEndpoint()
 
 export default {
-  getStarred (user) {
+  getStarred(user) {
     return Vue.http.get(`${endpoint}/users/${user}/starred`)
   },
-  getRepoReadme (params) {
+  getRepoReadme(params) {
     return Vue.http.get(`${endpoint}/repos/${params.owner}/${params.repo}/readme`)
   },
-  getUser (user) {
+  getUser(user) {
     return Vue.http.get(`${endpoint}/users/${user}`)
-  }
+  },
 }
