@@ -73,8 +73,10 @@ export default {
   },
 
   watch: {
-    '$route'() {
-      this.fetchData()
+    '$route'(to, from) {
+      if (to.params.username !== from.params.username) {
+        this.fetchData()
+      }
     },
   },
 
