@@ -12,7 +12,7 @@
       <v-toolbar-title><UserSearch /></v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid fill-height>
+      <v-container class="mainContainer" fluid fill-height>
         <v-layout
           justify-center
           align-center
@@ -67,6 +67,10 @@ export default {
   -webkit-animation: Gradient 35s ease infinite;
   -moz-animation: Gradient 35s ease infinite;
   animation: Gradient 35s ease infinite;
+}
+
+.mainContainer {
+  padding: 0;
 }
 
 @-webkit-keyframes Gradient {

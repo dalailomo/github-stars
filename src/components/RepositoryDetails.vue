@@ -1,56 +1,58 @@
 <template>
-  <v-layout>
-    <v-flex xs12 sm8 offset-sm2>
-      <v-card class="summary" v-if="loadingStarred">
-        <v-card-text>Loading...</v-card-text>
-      </v-card>
-      <v-card class="summary" v-else-if="item.owner">
-        <v-card-media :src="item.owner.avatar_url" height="100px">
-        </v-card-media>
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">{{ item.name }}</h3>
-            <p>Author: <big>{{ item.owner.login }}</big></p>
-            <p v-if="item.license">License: <big>{{ item.license.key }} ({{ item.license.name }})</big></p>
-            <p>Language: <big>{{ item.language }}</big></p>
-          </div>
-        </v-card-title>
+  <v-container grid-list-md>
+    <v-layout row wrap>
+      <v-flex xs12 sm4>
+        <v-card class="summary" v-if="loadingStarred">
+          <v-card-text>Loading...</v-card-text>
+        </v-card>
+        <v-card class="summary" v-else-if="item.owner">
+          <v-card-media :src="item.owner.avatar_url" height="100px">
+          </v-card-media>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">{{ item.name }}</h3>
+              <p>Author: <big>{{ item.owner.login }}</big></p>
+              <p v-if="item.license">License: <big>{{ item.license.key }} ({{ item.license.name }})</big></p>
+              <p>Language: <big>{{ item.language }}</big></p>
+            </div>
+          </v-card-title>
 
-        <v-divider />
+          <v-divider />
 
-        <v-card-text class="stats">
-          <div><v-icon small>star</v-icon> {{ item.stargazers_count }}</div>
-          <div><v-icon small>visibility</v-icon> {{ item.watchers_count }}</div>
-          <div><v-icon small>call_split</v-icon> {{ item.forks_count }}</div>
-          <div><v-icon small>info_outline</v-icon> {{ item.open_issues_count }}</div>
-        </v-card-text>
+          <v-card-text class="stats">
+            <div><v-icon small>star</v-icon> {{ item.stargazers_count }}</div>
+            <div><v-icon small>visibility</v-icon> {{ item.watchers_count }}</div>
+            <div><v-icon small>call_split</v-icon> {{ item.forks_count }}</div>
+            <div><v-icon small>info_outline</v-icon> {{ item.open_issues_count }}</div>
+          </v-card-text>
 
-        <v-divider />
+          <v-divider />
 
-        <v-card-text class="description">
-          <p v-if="item.description">{{ item.description }}</p>
-          <p v-else><i>No description</i></p>
-        </v-card-text>
+          <v-card-text class="description">
+            <p v-if="item.description">{{ item.description }}</p>
+            <p v-else><i>No description</i></p>
+          </v-card-text>
 
-        <v-card-actions>
-          <v-btn flat small color="primary" @click="visitRepository(item.html_url)">Repository</v-btn>
-          <v-spacer />
-          <v-btn flat small color="green" @click="changeUser(item.owner.login)">Author stars</v-btn>
-        </v-card-actions>
-      </v-card>
+          <v-card-actions>
+            <v-btn flat small color="primary" @click="visitRepository(item.html_url)">Repository</v-btn>
+            <v-spacer />
+            <v-btn flat small color="green" @click="changeUser(item.owner.login)">Author stars</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
 
-      <div class="spaced" />
-
-      <v-card class="readme" v-if="loading">
-        <v-card-text>Loading...</v-card-text>
-      </v-card>
-      <v-card class="readme" ref="readmeRef" v-else>
-        <v-card-text>
-          <vue-markdown v-if="readme.content" :source="readme.content" />
-        </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+      <v-flex xs12 sm8>
+        <v-card class="readme" v-if="loading">
+          <v-card-text>Loading...</v-card-text>
+        </v-card>
+        <v-card class="readme" ref="readmeRef" v-else>
+          <v-card-text>
+            <vue-markdown v-if="readme.content" :source="readme.content" />
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <style lang="less">
@@ -65,8 +67,10 @@ p {
 }
 
 .summary {
-  max-width: 400px;
   margin: auto;
+
+  position: sticky;
+  top: 71px;
 }
 
 .stats {
@@ -78,17 +82,13 @@ p {
   }
 }
 
-.spaced {
-  margin: 24px 0;
-}
-
 .layout {
   max-width: 975px;
   margin: auto;
 }
 
 .readme {
-  max-width: 88vw;
+  max-width: calc(100vw - 16px);
   line-height: 1.8em;
   overflow-x: auto;
 
