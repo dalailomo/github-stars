@@ -41,7 +41,7 @@ export default {
     submit(e) {
       e.preventDefault()
 
-      this.$router.push(`/details/${this.username}`)
+      this.$router.push({ name: 'userDetails', params: { username: this.username } })
     },
   },
 

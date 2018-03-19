@@ -153,7 +153,7 @@ export default {
     ]),
 
     changeUser(user) {
-      this.$router.push(`/details/${user}`)
+      this.$router.push({ name: 'userDetails', params: { username: user } })
     },
 
     visitRepository(href) {
