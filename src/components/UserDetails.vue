@@ -1,6 +1,6 @@
 <template>
   <v-card v-if="loading" class="profile">
-    Loading...
+    <Loading />
   </v-card>
   <v-card v-else-if="user.login" class="profile">
     <v-card-media
@@ -45,9 +45,14 @@
 </style>
 
 <script>
+import Loading from './Loading'
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  components: {
+    Loading,
+  },
+
   computed: {
     ...mapState({
       user: state => state.githubUser.data,

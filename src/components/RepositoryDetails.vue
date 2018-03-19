@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12 sm4>
         <v-card class="summary" v-if="loadingStarred">
-          <v-card-text>Loading...</v-card-text>
+          <v-card-text><Loading /></v-card-text>
         </v-card>
         <v-card class="summary" v-else-if="item.owner">
           <v-card-media :src="item.owner.avatar_url" height="100px">
@@ -43,7 +43,7 @@
 
       <v-flex xs12 sm8>
         <v-card class="readme" v-if="loading">
-          <v-card-text>Loading...</v-card-text>
+          <v-card-text><Loading /></v-card-text>
         </v-card>
         <v-card class="readme" ref="readmeRef" v-else>
           <v-card-text>
@@ -130,12 +130,14 @@ p {
 </style>
 
 <script>
+import Loading from './Loading'
 import { mapState, mapActions } from 'vuex'
 import VueMarkdown from 'vue-markdown'
 
 export default {
   components: {
     VueMarkdown,
+    Loading,
   },
 
   computed: {

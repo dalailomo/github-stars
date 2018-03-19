@@ -1,6 +1,6 @@
 <template>
   <v-card flat v-if="loading" class="profile">
-    <v-card-text>Loading...</v-card-text>
+    <v-card-text><Loading /></v-card-text>
   </v-card>
   <v-list two-line v-else-if="items.length > 0">
     <template v-for="(item, index) in items">
@@ -28,9 +28,14 @@
 </template>
 
 <script>
+import Loading from './Loading'
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  components: {
+    Loading,
+  },
+
   computed: {
     ...mapState({
       items: state => state.starredList.items,
