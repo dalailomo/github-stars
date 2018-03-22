@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User search form rendering Renders form 1`] = `
+<form novalidate="novalidate" class="searchField">
+  <div class="input-group input-group--text-field input-group--single-line primary--text">
+    <label>Github user name</label>
+    <div class="input-group__input">
+      <input name="name" tabindex="0" aria-label="Github user name" type="text">
+    </div>
+    <div class="input-group__details">
+      <!---->
+    </div>
+  </div>
+  <button type="button" class="btn theme--dark green">
+    <div class="btn__content">Search</div>
+  </button>
+</form>
+`;

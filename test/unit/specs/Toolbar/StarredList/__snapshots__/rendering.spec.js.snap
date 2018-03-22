@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Starred list component rendering Renders list with no results 1`] = `
+<div class="card card--flat" style="height: auto;">
+  <div class="card__text">No results :(</div>
+</div>
+`;
+
+exports[`Starred list component rendering Renders list with some results 1`] = `
+<div class="list list--two-line">
+  <router-link to="[object Object]">
+    <div>
+      <a class="list__tile list__tile--link list__tile--avatar">
+        <div class="list__tile__avatar">
+          <div class="avatar" style="height: 40px; width: 40px;">
+            <img src="url">
+          </div>
+        </div>
+        <div class="list__tile__content">
+          <div class="list__tile__title">Foo</div>
+          <div class="list__tile__sub-title">FooMan</div>
+        </div>
+      </a>
+    </div>
+    <hr class="divider">
+  </router-link>
+  <router-link to="[object Object]">
+    <div>
+      <a class="list__tile list__tile--link list__tile--avatar">
+        <div class="list__tile__avatar">
+          <div class="avatar" style="height: 40px; width: 40px;">
+            <img src="url2">
+          </div>
+        </div>
+        <div class="list__tile__content">
+          <div class="list__tile__title">Foo2</div>
+          <div class="list__tile__sub-title">FooMan2</div>
+        </div>
+      </a>
+    </div>
+    <hr class="divider">
+  </router-link>
+  <router-link to="[object Object]">
+    <div>
+      <a class="list__tile list__tile--link list__tile--avatar">
+        <div class="list__tile__avatar">
+          <div class="avatar" style="height: 40px; width: 40px;">
+            <img src="url3">
+          </div>
+        </div>
+        <div class="list__tile__content">
+          <div class="list__tile__title">Foo3</div>
+          <div class="list__tile__sub-title">FooMan3</div>
+        </div>
+      </a>
+    </div>
+    <hr class="divider">
+  </router-link>
+</div>
+`;

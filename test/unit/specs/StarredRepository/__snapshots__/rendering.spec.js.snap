@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Starred repository rendering Renders no data 1`] = `
+<div class="container grid-list-md">
+  <div class="layout row wrap">
+    <div class="flex xs12 sm4">
+      <!---->
+    </div>
+    <div class="flex xs12 sm8">
+      <div class="readme card" style="height: auto;">
+        <div class="card__text">
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Starred repository rendering Renders repository data 1`] = `
+<div class="container grid-list-md">
+  <div class="layout row wrap">
+    <div class="flex xs12 sm4">
+      <div class="summary card" style="height: auto;">
+        <div class="card__media" style="height: 100px;">
+          <div class="card__media__background"></div>
+          <div class="card__media__content"></div>
+        </div>
+        <div class="card__title card__title--primary">
+          <div>
+            <h3 class="headline mb-0">Foo</h3>
+            <p>Author:
+              <big>foo</big>
+            </p>
+            <!---->
+            <p>Language:
+              <big></big>
+            </p>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="card__text stats">
+          <div>
+            <i aria-hidden="true" class="icon material-icons" style="font-size: 16px;">star</i>
+          </div>
+          <div>
+            <i aria-hidden="true" class="icon material-icons" style="font-size: 16px;">visibility</i>
+          </div>
+          <div>
+            <i aria-hidden="true" class="icon material-icons" style="font-size: 16px;">call_split</i>
+          </div>
+          <div>
+            <i aria-hidden="true" class="icon material-icons" style="font-size: 16px;">info_outline</i>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="card__text description">
+          <p>Foodesc</p>
+        </div>
+        <div class="card__actions">
+          <button type="button" class="btn btn--flat btn--small primary--text">
+            <div class="btn__content">Repository</div>
+          </button>
+          <div class="spacer"></div>
+          <button type="button" class="btn btn--flat btn--small green--text">
+            <div class="btn__content">Author stars</div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flex xs12 sm8">
+      <div class="readme card" style="height: auto;">
+        <div class="card__text">
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

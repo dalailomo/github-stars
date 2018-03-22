@@ -1,24 +1,9 @@
 <template>
-  <orbit-spinner
-    class="spinner-element"
-    :animation-duration="1200"
-    :size="40"
-    color="#777"
-  />
+  <div class="spinner-element">Loading...</div>
 </template>
 
 <style scoped>
 .spinner-element {
-  margin: auto;
+  text-align: center;
 }
 </style>
-
-<script>
-import { OrbitSpinner } from 'epic-spinners'
-
-export default {
-  components: {
-    OrbitSpinner,
-  },
-}
-</script>

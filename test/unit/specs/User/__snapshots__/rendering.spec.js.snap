@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User rendering Renders that there is no user 1`] = `
+<div class="profile card" style="height: auto;">
+  User not found :(
+</div>
+`;
+
+exports[`User rendering Renders user details 1`] = `
+<div class="profile card" style="height: auto;">
+  <div class="white--text card__media" style="height: 200px;">
+    <div class="card__media__background"></div>
+    <div class="card__media__content">
+      <div class="container fill-height fluid">
+        <div class="layout fill-height">
+          <div class="flex xs12 align-end flexbox"><span class="headline">foo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card__title">
+    <div><span class="grey--text">foo</span>
+      <br> <span>Foo</span></div>
+  </div>
+  <div class="card__actions">
+    <div class="spacer"></div>
+    <button type="button" class="btn btn--flat btn--small primary--text">
+      <div class="btn__content">View user page</div>
+    </button>
+  </div>
+</div>
+`;
