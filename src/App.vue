@@ -1,16 +1,6 @@
 <template>
   <v-app id="app">
-    <v-navigation-drawer
-      floating
-      v-model="drawer"
-      app
-    >
-      <StarredList />
-    </v-navigation-drawer>
-    <v-toolbar fixed app>
-      <v-toolbar-side-icon :disabled="items.length < 1" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title><UserSearch /></v-toolbar-title>
-    </v-toolbar>
+    <ToolbarElement />
     <v-content>
       <v-container class="mainContainer" fluid fill-height>
         <v-layout
@@ -26,13 +16,11 @@
 
 <script>
 import { mapState } from 'vuex'
-import StarredList from './components/StarredList'
-import UserSearch from './components/UserSearch'
+import ToolbarElement from '@/components/Toolbar'
 
 export default {
   components: {
-    StarredList,
-    UserSearch,
+    ToolbarElement,
   },
 
   computed: {

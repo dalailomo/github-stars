@@ -130,7 +130,7 @@ p {
 </style>
 
 <script>
-import Loading from './Loading'
+import Loading from '@/components/Common/Loading'
 import { mapState, mapActions } from 'vuex'
 import VueMarkdown from 'vue-markdown'
 

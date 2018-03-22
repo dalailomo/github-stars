@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import UserDetails from '@/components/UserDetails'
-import RepositoryDetails from '@/components/RepositoryDetails'
+import User from '@/components/User'
+import StarredRepository from '@/components/StarredRepository'
 
 Vue.use(Router)
 
@@ -15,14 +15,14 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/details/:username',
+      path: '/user/:username',
       name: 'userDetails',
-      component: UserDetails,
+      component: User,
     },
     {
-      path: '/details/:username/starred/:owner/:repository',
+      path: '/user/:username/starred-repository/:owner/:repository',
       name: 'repositoryDetails',
-      component: RepositoryDetails,
+      component: StarredRepository,
     },
   ],
 })

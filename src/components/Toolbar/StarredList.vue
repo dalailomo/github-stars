@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Loading from './Loading'
+import Loading from '@/components/Common/Loading'
 import { mapState, mapActions } from 'vuex'
 
 export default {
